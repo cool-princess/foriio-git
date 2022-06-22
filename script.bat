@@ -1,0 +1,1 @@
+"C:\xampp\php\php.exe" "artisan" notify:users > "NUL" 2>&1

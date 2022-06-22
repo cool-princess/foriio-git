@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="202.48" height="39" viewBox="0 0 202.48 39">
+  <g id="Group_5" data-name="Group 5" transform="translate(1257.48 -160)">
+    <g id="logo_b_v4" transform="translate(-1257.48 166.08)">
+      <g id="Group_4" data-name="Group 4" transform="translate(0 0.08)">
+        <path id="Path_1" data-name="Path 1" d="M291.05.08a2.592,2.592,0,0,0-2.6,2.564,2.6,2.6,0,0,0,5.2,0A2.569,2.569,0,0,0,291.05.08Z" transform="translate(-246.469 -0.08)" fill="#929497"/>
+        <path id="Path_2" data-name="Path 2" d="M343.9.08a2.591,2.591,0,0,0-2.6,2.564,2.6,2.6,0,1,0,5.2,0A2.569,2.569,0,0,0,343.9.08Z" transform="translate(-291.627 -0.08)" fill="#929497"/>
+        <path id="Path_3" data-name="Path 3" d="M396.662,43.98a8.652,8.652,0,1,0,8.652,8.652A8.662,8.662,0,0,0,396.662,43.98Zm0,12.964a4.311,4.311,0,1,1,4.311-4.311A4.316,4.316,0,0,1,396.662,56.944Z" transform="translate(-331.835 -37.973)" fill="#323031"/>
+        <path id="Path_4" data-name="Path 4" d="M87.1,43.98a8.652,8.652,0,1,0,8.652,8.652A8.662,8.662,0,0,0,87.1,43.98Zm0,12.964a4.311,4.311,0,1,1,4.311-4.311A4.316,4.316,0,0,1,87.1,56.944Z" transform="translate(-67.092 -37.973)" fill="#323031"/>
+        <rect id="Rectangle_38" data-name="Rectangle 38" width="4.341" height="16.517" transform="translate(50.121 6.401)" fill="#323031"/>
+        <rect id="Rectangle_39" data-name="Rectangle 39" width="4.341" height="16.517" transform="translate(42.413 6.401)" fill="#323031"/>
+        <path id="Path_5" data-name="Path 5" d="M9.015,4.561a1.831,1.831,0,0,1,1.231.469l2.943-3.117A6.219,6.219,0,0,0,9.015.32,6.094,6.094,0,0,0,2.858,6.334v.733H0v4.242H2.858V23.2H7.2V11.309h2.858V7.067H7.2V6.334A1.8,1.8,0,0,1,9.015,4.561Z" transform="translate(0 -0.284)" fill="#323031"/>
+        <path id="Path_6" data-name="Path 6" d="M215,43.98a6.163,6.163,0,0,0-6.157,6.157V60.891h4.341V50.137a1.811,1.811,0,0,1,3.116-1.261l2.934-3.2A6.122,6.122,0,0,0,215,43.98Z" transform="translate(-178.506 -37.973)" fill="#323031"/>
+      </g>
+    </g>
+    <text id="Benefits" transform="translate(-1175 189)" fill="#14c4c8" font-size="32" font-family="ProximaNova-Bold, Proxima Nova" font-weight="700"><tspan x="0" y="0">Benefits</tspan></text>
+  </g>
+</svg>

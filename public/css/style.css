@@ -1,0 +1,991 @@
+@media screen {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Shippori+Mincho+B1&display=swap');
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: #000;
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer!important;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    outline: none;
+}
+
+.container {
+    max-width: 1080px;
+    margin: auto;
+}
+
+.alert-danger ul, 
+.alert-danger ol {
+    list-style: none;
+} 
+
+.header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.navbar {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar h1 {
+    height: 100%;
+}
+
+.navbar h1 a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar h1 img {
+    height: 15px;
+    width: auto;
+    transition: all .2s ease-in-out;
+}
+
+.navbar h1 img:hover {
+    transform: scale(1.1);
+}
+
+.menubar {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menubar-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menubar-name {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    color: #000;
+    margin-left: 30px;
+    position: relative;
+}
+
+.menubar-name::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: -5px;
+    height: 2px;
+    width: 0px;
+    background: #020F66;
+    -webkit-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.menubar-name:hover::after {
+    width: 100%;
+}
+
+.primary-btn {
+    width: 303px;
+    height: 37px;
+    border-radius: 18.5px;
+    background: #5863f8;
+    border: 1px solid #5863f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+    transition: all .2s ease-in-out;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: #5863f8;
+} 
+
+.common-btn {
+    width: 303px;
+    height: 37px;
+    border-radius: 18.5px;
+    background: #fff;
+    border: 1px solid #5863f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #5863f8;
+    transition: all .2s ease-in-out;
+}
+
+.common-btn:hover {
+    background: #5863f8;
+    color: #fff;
+} 
+
+/***********LogIn page*********/
+#admin_login {
+    width: 100%;
+    height: calc(100vh - 80px);
+    position: relative;
+    display: flex;
+}
+
+.login-l-part {
+    width: 70%;
+    padding: 60px 130px;
+}
+
+.login-title {
+    margin-bottom: 60px;
+}
+
+.login-title img {
+    height: 40px;
+    width: auto;
+}
+
+.login-content {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 29px;
+    text-align: left;
+    color: #828282;
+    margin-bottom: 70px;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #c50909;
+    margin-bottom: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.form-main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 45px;
+}
+
+.login-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 48%;
+}
+
+.login-item-label {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.login-item-input {
+    position: relative;
+    width: 100%;
+}
+
+.login-item-input #togglePassword {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+
+.login-item-input input {
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.login-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 0 auto;
+}
+
+.login-btn {
+    margin-bottom: 45px;
+}
+
+.login-new-register {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    color: #5863f8;
+}
+
+.login-r-part {
+    width: 30%;
+    height: 100%;
+    background: url("../img/login-img.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px 80px;
+}
+
+.login-r-part-btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.login-r-part-btn-group a {
+    font-size: 12px;
+    text-align: left;
+    color: #5863f8;
+}
+
+.login-r-part-btn-group a:last-child {
+    margin-left: 30px;
+}
+
+/***************Admin Register Page**************/
+#admin_register {
+    width: 100%;
+}
+
+#admin_register .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+.main-title {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 32px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title.active {
+    display: flex;
+}
+
+.main-title img {
+    margin-bottom: 60px;
+}
+
+.admin-register-complete-title {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.admin-register-complete-content {
+    font-size: 13px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+}
+
+.admin-register-thanks-title {
+    color: #5863f8;
+}
+
+.workflow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.workflow-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.workflow-title {
+    font-weight: 500;
+    font-size: 10px;
+    text-align: center;
+    color: #d4d9de;
+    margin-bottom: 15px;
+}
+
+.workflow-state.active .workflow-title.active-current {
+    color: #5863f8;
+}
+
+.workflow-state.active .workflow-title.active-pass {
+    color: #828282;
+}
+
+.workflow-chart {
+    display: flex;
+    align-items: center;
+}
+
+.workflow-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #d4d9de;
+    position: relative;
+    color: #d4d9de;
+}
+
+.workflow-circle span {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    font-size: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.workflow-state.active .workflow-circle.active-current {
+    color: #5863f8;
+    background-color: #fff;
+    border: 5px solid #5863f8;
+}
+
+.workflow-state.active .workflow-circle.active-past {
+    background-color: #5863f8;
+    color: #5863f8;
+}
+
+.workflow-state.active .workflow-circle.active-pass {
+    background-color: #828282;
+    color: #828282;
+}
+
+.workflow-border {
+    width: 70px;
+    border-bottom: 1px solid #d4d9de;
+}
+
+.workflow-state.active .workflow-border {
+    border-bottom: 1px solid #5863f8;
+}
+
+.admin-register-part {
+    width: 100%;
+}
+
+.admin-register-part form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-register-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.admin-register-item-left {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.admin-register-item-left span {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: left;
+    color: #ff4646;
+    margin-left: 20px;
+}
+
+.admin-register-item-left .extra-text {
+    font-size: 14px;
+    line-height: 32px;
+    text-align: left;
+    color: #000;
+}
+
+.admin-register-item-right {
+    width: 100%;
+}
+
+.admin-register-item-right.file-upload {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.admin-register-item-right.file-upload .invalid-feedback {
+    margin-bottom: 0;
+}
+
+.admin-register-item-right.file-upload label {
+    height: 40px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: left;
+    color: #828282;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+.admin-register-item-right.file-upload input {
+    height: 40px;
+    background: #fff;
+    border: none;
+    width: unset;
+}
+
+.admin-register-item-right.file-upload input:focus {
+    outline: none;
+    border: none;
+}
+
+.admin-register-item-right input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.admin-register-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 25px;
+}
+
+.admin-register-btn-group {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-register-btn-group .admin-register-btn {
+    margin: 0 20px;
+}
+
+#register-back,
+#register-thanks {
+    display: none;
+}
+
+.admin-register-success-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    display: none;
+    margin-top: 40px;
+}
+
+/*************Contract Page******************/
+
+#admin_contract .container {
+    padding: 100px 0;
+}
+
+.contract-part {
+    width: 100%;
+}
+
+.contract-content {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 30px;
+}
+
+.contract-img {
+    width: 100%;
+}
+
+.contract-img img {
+    width: 100%;
+    height: auto;
+}
+
+.modal1 {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, .8);
+    transition: all .4s;
+}
+
+.modal2 {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(77, 77, 77, .8);
+    transition: all .4s;
+}
+  
+.modal-content {
+    border-radius: 4px;
+    position: relative;
+    width: 350px;
+    max-width: 90%;
+    background: #fff; 
+    padding: 80px 20px 40px;
+    color: #464646;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal2 .modal-content {
+    width: 600px;
+}
+
+.modal-close1,
+.modal-close2 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    border-radius: 6.5px;
+    background-color: #CCCCCC;
+    width: 35px;
+    height: 35px;
+    text-decoration: none;
+    font-size: 34px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.modal-content h1 {
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 100px;
+}
+
+.modal2 .modal-content h1 {
+    margin-bottom: 30px;
+}
+
+.modal-content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content textarea {
+    width: 100%;
+    height: 340px;
+    background: transparent;
+    border: 1px solid #ddd;
+    resize: none;
+    margin-bottom: 30px;
+}
+
+.contract-next-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 30px;
+}
+
+.admin-contract-thanks-title {
+    display: flex;
+}
+
+#admin_benefit .container {
+    padding: 80px 0;
+}
+
+.benefit-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 60px;
+}
+
+.admin-benefit-part {
+    width: 100%;
+}
+
+.admin-benefit-part form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-benefit-part form .admin-register-item textarea {
+    width: 100%;
+    min-height: 50px;
+    resize: vertical;
+}
+
+.admin-register-item .admin-register-item-left span.extra {
+    color: #979797;
+}
+
+.admin-register-btn-group .admin-benefit-btn {
+    margin: 0 20px;
+}
+
+.admin-benefit-confirm-text,
+.admin-benefit-success-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+}
+
+.admin-to-desired-btn {
+    margin: auto;
+}
+
+.file-upload-thumb {
+    width: 400px;
+}
+
+.file-upload-thumb img {
+    width: 100%;
+    height: auto;
+}
+
+#admin_desire_date .container {
+    padding: 80px 0;
+}
+
+.admin-desire-input-text,
+.admin-desire-confirm-text,
+.admin-desire-complete-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 30px;
+}
+
+.admin-report-input-text,
+.admin-report-complete-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: #828282;
+    margin-bottom: 30px;
+}
+
+.admin-report-btn {
+    margin: 0 20px;
+}
+
+#admin_report .container {
+    padding: 80px 0;
+}
+
+#admin_report .workflow {
+    justify-content: center;
+}
+
+#report-form .admin-register-item-right input {
+    text-align: center;
+    border: none;
+    font-weight: 500;
+    text-decoration: underline;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    color: #828282;
+}
+
+#report-form .admin-register-item {
+    margin-bottom: 100px;
+}
+
+.admin-all-complete-btn {
+    margin: auto;
+}
+
+#all_complete .container {
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-left {
+    width: 30%;
+}
+
+.all-left img {
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.all-title {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 32px;
+    text-align: left;
+    color: #5863f8;
+    margin-bottom: 40px;
+}
+
+.all-content {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: left;
+    color: #828282;
+}
+
+.all-right {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.all-item {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.all-item img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
+    margin-bottom: 5px;
+}
+
+.all-item  a {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: left;
+    color: #000;
+}
+
+#admin_manage .header .navbar h1 a img {
+    height: 25px;
+    margin-right: 15px;
+}
+
+#admin_manage .header .navbar h1 a span {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+    color: #000;
+}
+
+#admin_manage .header .menubar .menubar-group a {
+    width: 132px;
+    height: 37px;
+    border-radius: 18.5px;
+    background: #5863f8;
+    border: 1px solid #5863f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
+}
+
+#admin_manage .header .menubar .menubar-group a::after {
+    display: none;
+}
+
+#admin_manage .header .menubar .menubar-group a:hover {
+    background: #fff;
+    color: #5863f8;
+}
+
+#admin_manage .container {
+    padding: 80px 0;
+}
+
+#admin_manage .container form {
+    width: 100%;
+}
+
+#admin_manage table {
+    width: 100%;
+}
+
+#admin_manage table tr th, td {
+    padding: 25px 5px;
+    text-align: left;
+}
+
+#admin_manage table tr th {
+    white-space: nowrap;
+}
+
+#admin_manage table tr:first-child th {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+#admin_manage table td input {
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+    height: 25px;
+}
+
+#admin_manage table td select {
+    border-radius: 13px;
+    background: #fff;
+    border: 1px solid #ddd;
+    height: 25px;
+}
+
+#admin_manage table input[type="file" i]::-webkit-file-upload-button {
+    visibility: hidden;
+    width: 0;
+    margin: 0;
+}
+
+#admin_manage table label {
+    font-weight: 500;
+    text-decoration: underline;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: left;
+    color: #5863f8;
+}
+
+#admin_manage table input.filename {
+    border: none;
+    width: unset;
+    font-weight: 500;
+    font-size: 10px;
+    text-align: left;
+    color: #000;    
+    height: unset;
+    padding: 0;
+}
+
+#admin_manage table td div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#admin_manage table .non-editable {
+    border: none;
+    width: fit-content;
+}
+
+#admin_manage table .non-editable:focus {
+    border: none;
+    outline: none;
+}
