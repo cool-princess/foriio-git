@@ -66,4 +66,36 @@ class LogInController extends Controller
             return back()->withErrors($errors)->withInput($request->only('email', 'remember'));
         }
     }
+
+    public function showAdminLoginForm()
+    {
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
+        return view('auth.admin.login');
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            if($request->remember===null){
+                setcookie('login_email',$request->email,100);
+                setcookie('login_pass',$request->password,100);
+            }
+            else{
+                setcookie('login_email',$request->email,time()+60*60*24*100);
+                setcookie('login_pass',$request->password,time()+60*60*24*100);
+ 
+            }
+            return redirect('/admin/manage');
+        }else{
+            $errors = new MessageBag(['email' => ['ログイン情報が正しくありません。']]);
+            return back()->withErrors($errors)->withInput($request->only('email', 'remember'));
+        }
+    }
 }

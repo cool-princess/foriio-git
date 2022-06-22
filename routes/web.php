@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogInController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\User\UserRegistrationController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ContractController;
 
 /*
@@ -55,3 +56,9 @@ Route::post('/report_quiz', [ContractController::class,'report_quiz'])->name('us
 Route::get('/all_complete', [ContractController::class, 'all_complete'])->name('userAllComplete');
 Route::get('/admin/manage', [ContractController::class, 'manage'])->name('adminManage');
 Route::post('/admin/manage', [ContractController::class, 'managePost'])->name('adminManagePost');
+
+Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('showAdminLoginForm');
+Route::post('/admin/login', [LoginController::class,'adminLogin'])->name('adminLoginPost');
+Route::get('/admin/register', [AdminController::class,'show'])->name('adminRegister');
+Route::post('/admin/register', [AdminController::class,'store'])->name('adminRegisterPost');
+Route::get('/admin/logout', [LogoutController::class,'adminLogout'])->name('adminLogout');

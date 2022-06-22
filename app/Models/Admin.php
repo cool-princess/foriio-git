@@ -20,23 +20,10 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'password', 
-        'company_name',
-        'furi_company_name',
-        'department_name',
-        'job_title', 
-        'name', 
-        'furi_name', 
+        'company', 
+        'person', 
         'email', 
-        'phone',
-        'zipcode',
-        'address1',
-        'address2',
-        'address3',
-        'address4',
-        'sectors',
-        'break',
-        'pwd_store',
-        'download_count'
+        'pwd_store'
     ];
 
     /**
