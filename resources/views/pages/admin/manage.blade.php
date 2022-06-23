@@ -74,16 +74,16 @@
                                 <td>
                                     <select name="status_{{$user->id}}" id="status_{{$user->id}}">
                                         <option value=""></option>
-                                        <option value="登録後表示">登録後表示</option>
-                                        <option value="契約書締結中">契約書締結中</option>
-                                        <option value="契約書締結済">契約書締結済</option>
-                                        <option value="特典内容確定済">特典内容確定済</option>
-                                        <option value="希望日決定済">希望日決定済</option>
-                                        <option value="送信後原稿チェック中">送信後原稿チェック中</option>
-                                        <option value="原稿確定済（全て完了）">原稿確定済<br>（全て完了）</option>
+                                        <option value="登録">登録</option>
+                                        <option value="契約書">契約書</option>
+                                        <option value="foriio Benefits">foriio Benefits</option>
+                                        <option value="プレスリリース日決定">プレスリリース日決定</option>
+                                        <option value="プレスリリース原稿">プレスリリース原稿</option>
                                     </select>
                                     <script>
-                                        $("#status_{{$user->id}} option[value={{ $user->status }}]").attr('selected','selected');
+                                        @if(!is_null($user->status))
+                                            $("#status_{{$user->id}} option[value={{ $user->status }}]").attr('selected','selected');
+                                        @endif
                                     </script>
                                 </td>
                             </tr>
@@ -122,6 +122,7 @@
                 processData: false,
                 contentType: false,
                 success: function(response){
+                    console.log(response);
                     window.location.href = "{{ route('adminManage') }}";
                 },
                 error: function (error) {

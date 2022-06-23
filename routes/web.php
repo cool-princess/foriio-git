@@ -62,3 +62,22 @@ Route::post('/admin/login', [LoginController::class,'adminLogin'])->name('adminL
 Route::get('/admin/register', [AdminController::class,'show'])->name('adminRegister');
 Route::post('/admin/register', [AdminController::class,'store'])->name('adminRegisterPost');
 Route::get('/admin/logout', [LogoutController::class,'adminLogout'])->name('adminLogout');
+
+Route::get('download/{filename}', function($filename)
+{
+    // Check if file exists in app/storage/file folder
+    $file_path = storage_path() .'/app/public/uploads/'. $filename;
+    if (file_exists($file_path))
+    {
+        // Send Download
+        return Response::download($file_path, $filename, [
+            'Content-Length: '. filesize($file_path)
+        ]);
+    }
+    else
+    {
+        // Error
+        exit('Requested file does not exist on our server!');
+    }
+})
+->where('filename', '[A-Za-z0-9\-\_\.]+')->name('downloadLink');

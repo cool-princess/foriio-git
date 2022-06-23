@@ -36,7 +36,7 @@
                         <div class="admin-register-item-left">
                         </div>
                         <div class="admin-register-item-right">
-                            <input type="text" name="report_url" placeholder="" value="{{old('report_url')}}" class="form-item" readonly="readonly">
+                            <a href="{{ $release_url }}" target="_blank" rel="noopener noreferrer">{{ $release_url }}</a>
                         </div>
                     </div>
                     <div class="admin-register-btn-group">

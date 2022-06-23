@@ -18,4 +18,11 @@
             @include('includes.footer')
         </div>
     </section>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                window.location.href="{{ route('userContract') }}";
+            }, 1000);
+        });
+    </script>
 @stop

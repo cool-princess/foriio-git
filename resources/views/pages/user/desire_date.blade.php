@@ -112,7 +112,9 @@
     <script>
         $(function() {
             $( "input[name=desire_date]" ).datepicker({ dateFormat: 'yy/mm/dd' });
+            $("input[name=desire_date]").datepicker( $.datepicker.regional[ "ja" ] );
             $( "input[name=delivery_date]" ).datepicker({ dateFormat: 'yy/mm/dd' });
+            $("input[name=delivery_date]").datepicker( $.datepicker.regional[ "ja" ] );
         });
         $(document).ready(function() {
             $("input[name=desire_date]").focus(function() {
