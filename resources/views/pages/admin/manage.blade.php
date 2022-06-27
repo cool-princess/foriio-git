@@ -76,7 +76,7 @@
                                         <option value=""></option>
                                         <option value="登録">登録</option>
                                         <option value="契約書">契約書</option>
-                                        <option value="foriio Benefits">foriio Benefits</option>
+                                        <option value="Benefits">foriio Benefits</option>
                                         <option value="プレスリリース日決定">プレスリリース日決定</option>
                                         <option value="プレスリリース原稿">プレスリリース原稿</option>
                                     </select>

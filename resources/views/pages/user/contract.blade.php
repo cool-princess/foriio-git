@@ -142,7 +142,7 @@
                         success: function(response){
                             document.querySelector(".modal2").style.visibility = "hidden";
                             document.querySelector(".modal2").style.opacity = "0";
-                            window.location.href = 'http://localhost:8000/benefit';
+                            toastr.success("質問が送信されました。");
                         },
                         error: function (error) {
                             console.log(error);

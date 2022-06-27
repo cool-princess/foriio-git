@@ -814,12 +814,6 @@ button:hover {
 
 .admin-benefit-part {
     width: 100%;
-    position: relative;
-}
-
-.hs-button {
-    background: #5863f8!important;
-    border: 1px solid #5863f8!important;
 }
 
 .admin-benefit-part form {
@@ -843,45 +837,6 @@ button:hover {
     margin: 0 20px;
 }
 
-.admin-benefit-btn-group {
-    width: 100%;
-}
-
-.admin-benefit-btn-part {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 60px;
-}
-
-.admin-benefit-btn-text {
-    font-size: 12px;
-    line-height: 24px;
-    text-align: center;
-    color: #828282;
-    margin-bottom: 20px;
-}
-.benefit-alt-btn {
-    position: absolute;
-    bottom: 17px;
-    left: 0;
-    width: 74px;
-    height: 38px;
-    background: #ff7a59;
-    border: 1px solid #ff7a59;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    text-align: center;
-    color: #fff;
-}
-.benefit-alt-btn:hover {
-    background: #fff;
-    color: #ff7a59;
-}
 .admin-benefit-confirm-text,
 .admin-benefit-success-text {
     font-size: 12px;
@@ -952,10 +907,9 @@ button:hover {
 }
 
 #all_complete .container {
-    padding: 160px 20px;
+    padding: 80px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .all-left {
@@ -1184,28 +1138,5 @@ button:hover {
     .admin-register-btn-group {
         flex-direction: column;
         gap: 20px;
-    }
-
-    #all_complete .container {
-        padding: 120px 20px;
-        flex-direction: column;
-    }
-
-    .all-left {
-        width: 100%;
-        margin-bottom: 40px;
-    }
-
-    .all-right {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .all-item {
-        width: 100%;
-    }
-
-    .all-item:nth-child(1) {
-        margin-bottom: 30px;
     }
 }

@@ -78,10 +78,10 @@
                     </div>
                     <div class="admin-register-item">
                         <div class="admin-register-item-left">
-                            <div>プレスリリース配信日<span>必須</span></div>
+                            <div>プレスリリース配信日</div>
                         </div>
                         <div class="admin-register-item-right">
-                            <input type="datetime" name="delivery_date" placeholder="yyyy/mm/dd" value="{{old('delivery_date')}}" class="form-item">
+                            <input type="datetime" name="delivery_date" placeholder="yyyy/mm/dd" value="{{old('delivery_date')}}" class="form-item" readonly="radyonly" disabled="desabled">
                             <span class="invalid-feedback"></span>
                         </div>
                     </div>

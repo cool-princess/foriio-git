@@ -131,7 +131,7 @@
                         success: function(response){
                             document.querySelector(".modal2").style.visibility = "hidden";
                             document.querySelector(".modal2").style.opacity = "0";
-                            window.location.href = 'http://localhost:8000/all_complete';
+                            toastr.success("質問が送信されました。");
                         },
                         error: function (error) {
                             console.log(error);
@@ -145,7 +145,7 @@
                     document.querySelector(".modal2").style.visibility = "visible";
                     document.querySelector(".modal2").style.opacity = "1";
                 }
-                else if (event.target.matches(".modal-close1") || event.target.matches(".modal-close2")) {
+                else if (event.target.py(".modal-close1") || event.target.matches(".modal-close2")) {
                     event.preventDefault();
                     closeModal();
                 }

@@ -48,7 +48,7 @@ class UserRegistrationController extends Controller
         $to = new SendGrid\Mail\To($request->email);
         $subject = new SendGrid\Mail\Subject('【仮登録完了のご連絡】foriio Creator Matchアカウント発行');
         
-        $data = "会社名：".$request->company."<br>担当者名：".$request->person."<br><br>foriio Creator Matchの仮登録が完了いたしました。<br>現段階では本登録は完了しておりません。<br>下記URLから本登録を完了してください。<br>よろしくお願いいたします。<br><br>URL：<a href='".Route('userRegisterComplete', ['company' => $request->company, 'person' => $request->person, 'email' => $request->email])."'>http://localhost:8000/register_complete</a><br><br>[foriio Benefitsに関するお問い合わせ先】<br>株式会社foriio<br>担当者:foriio Benefits担当窓口<br>mail : benefit@foriio.com<br><br>小野朋花";
+        $data = "会社名：".$request->company."<br>担当者名：".$request->person."<br><br>foriio Creator Matchの仮登録が完了いたしました。<br>現段階では本登録は完了しておりません。<br>下記URLから本登録を完了してください。<br>よろしくお願いいたします。<br><br>URL：<a href='".Route('userRegisterComplete', ['company' => $request->company, 'person' => $request->person, 'email' => $request->email])."'>".URL::to('/')."/register_complete</a><br><br>[foriio Benefitsに関するお問い合わせ先】<br>株式会社foriio<br>担当者:foriio Benefits担当窓口<br>mail : benefit@foriio.com<br><br>小野朋花";
         
         $htmlContent = new SendGrid\Mail\HtmlContent($data);
         
@@ -95,6 +95,24 @@ class UserRegistrationController extends Controller
         $admin_email = $request->email;
         $admin_company = $request->company;
         $admin_person = $request->person;
+
+        User::where('email', $admin_email)->update(array('status' => "登録"));
+
+        $from = new SendGrid\Mail\From(getenv('MAIL_FROM_ADDRESS'));
+        $to = new SendGrid\Mail\To($admin_email);
+        $subject = new SendGrid\Mail\Subject('【本登録完了のご連絡】foriio Creator Matchアカウント発行');
+        $data = "会社名：".$admin_company."<br>担当者名：".$admin_person."<br><br>ご登録ありがとうございます。<br><br>foriio Creator Matchの登録が完了いたしましたので、<br>次はforiio Benefits掲載に向けた業務提携契約をお願いいたします。<br>業務提携契締結はこちら<br><br>URL：<a href='".URL::to('/')."/contract'>".URL::to('/')."/contract</a><br><br>foriio Creator Matchはこちら<br>URL：<a href='https://creatormatch.foriio.com'>https://creatormatch.foriio.com</a><br><br>[foriio Benefitsに関するお問い合わせ先】<br>株式会社foriio<br>担当者:foriio Benefits担当窓口<br>mail : benefit@foriio.com<br><br>小野朋花";
+        $htmlContent = new SendGrid\Mail\HtmlContent($data);
+        $email = new SendGrid\Mail\Mail(
+            $from,
+            $to,
+            $subject,
+            null,
+            $htmlContent
+        );
+
+        $sendgrid = new SendGrid(getenv('MAIL_PASSWORD'));
+        $response = $sendgrid->send($email);
 
         $admin_from = new SendGrid\Mail\From(getenv('MAIL_FROM_ADDRESS'));
     
