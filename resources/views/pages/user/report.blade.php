@@ -14,9 +14,9 @@
                         05.プレスリリース原稿
                     </div>
                     <div class="workflow-chart">
-                        <div class="workflow-circle active-current"><span>確認</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle"><span>完了</span></div>
+                        <div class="workflow-circle circle01 active-current"><span>確認</span></div>
+                        <div class="workflow-border border01"></div>
+                        <div class="workflow-circle circle02"><span>完了</span></div>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             <div class="modal-content">
                 <h1>質問入力フォーム</h1>
                 <form id="quiz-form">
-                    <textarea name="quiz" id="" placeholder="質問・修正依頼をご記入ください。"></textarea>
+                    <textarea name="quiz" id="" placeholder="質問をご記入ください。"></textarea>
                     <span class="invalid-feedback"></span>
                     <a href="#" class="admin-report-btn primary-btn" id="report-quiz-send">送信する</a>
                 </form>
@@ -98,6 +98,10 @@
                         $(".admin-report-confirm-text").css("display", "none");
                         $(".admin-report-complete-text").css("display", "block");
                         $(".admin-all-complete-btn").css("display", "flex");
+                        $(".circle01").removeClass("active-current");
+                        $(".circle01").addClass("active-past");
+                        $(".border01").addClass("active-past");
+                        $(".circle02").addClass("active-current");
                     },
                     error: function (error) {
                         console.log(error);
@@ -145,7 +149,7 @@
                     document.querySelector(".modal2").style.visibility = "visible";
                     document.querySelector(".modal2").style.opacity = "1";
                 }
-                else if (event.target.py(".modal-close1") || event.target.matches(".modal-close2")) {
+                else if (event.target.matches(".modal-close1") || event.target.matches(".modal-close2")) {
                     event.preventDefault();
                     closeModal();
                 }

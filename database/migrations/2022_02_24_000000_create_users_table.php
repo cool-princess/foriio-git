@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('release_url')->nullable();
             $table->string('status')->nullable();
             $table->string('pwd_store');
+            $table->enum('break', ['on', 'off'])->default('off');
             $table->rememberToken();
             $table->timestamps();
         });

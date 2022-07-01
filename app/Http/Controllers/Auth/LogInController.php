@@ -60,7 +60,10 @@ class LogInController extends Controller
                 setcookie('login_pass',$request->password,time()+60*60*24*100);
  
             }
-            return redirect('/contract');
+            if(!is_null($_COOKIE['cur_url']))
+                return redirect($_COOKIE['cur_url']);
+            else
+                return redirect('/contract');
         }else{
             $errors = new MessageBag(['email' => ['ログイン情報が正しくありません。']]);
             return back()->withErrors($errors)->withInput($request->only('email', 'remember'));
@@ -92,7 +95,7 @@ class LogInController extends Controller
                 setcookie('login_pass',$request->password,time()+60*60*24*100);
  
             }
-            return redirect('/admin/manage');
+            return redirect('/admin');
         }else{
             $errors = new MessageBag(['email' => ['ログイン情報が正しくありません。']]);
             return back()->withErrors($errors)->withInput($request->only('email', 'remember'));

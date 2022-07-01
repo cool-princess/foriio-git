@@ -28,7 +28,8 @@ class User extends Authenticatable
         'doc_url', 
         'release_url', 
         'status',
-        'pwd_store'
+        'pwd_store',
+        'break'
     ];
 
     /**

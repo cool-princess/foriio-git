@@ -10,7 +10,7 @@
             <div class="main-title admin-register-confirm-title">公開日の確認</div>
             <div class="main-title admin-register-thanks-title"><img src="{{ asset('img/register-complete.png') }}" alt=""><span>受け付け完了</span></div>
             <div class="workflow">
-                <div class="workflow-state workflow-register active">
+                <div class="workflow-state workflow-register active-pass pc">
                     <div class="workflow-title active-pass"">
                         01.会員登録
                     </div>
@@ -22,7 +22,7 @@
                         <div class="workflow-circle active-pass"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-contract active">
+                <div class="workflow-state workflow-contract active-pass pc">
                     <div class="workflow-title active-pass">
                         02.契約書締結
                     </div>
@@ -32,7 +32,7 @@
                         <div class="workflow-circle active-pass"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-benefits active">
+                <div class="workflow-state workflow-benefits active-pass pc">
                     <div class="workflow-title active-pass">
                         03.特典内容
                     </div>
@@ -47,11 +47,11 @@
                         04.掲載日・プレスリリース日
                     </div>
                     <div class="workflow-chart">
-                        <div class="workflow-circle active-current"><span>入力</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle"><span>確認</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle"><span>完了</span></div>
+                        <div class="workflow-circle circle01 active-current"><span>入力</span></div>
+                        <div class="workflow-border border01"></div>
+                        <div class="workflow-circle circle02"><span>確認</span></div>
+                        <div class="workflow-border border02"></div>
+                        <div class="workflow-circle circle03"><span>完了</span></div>
                     </div>
                 </div>
             </div>
@@ -78,10 +78,10 @@
                     </div>
                     <div class="admin-register-item">
                         <div class="admin-register-item-left">
-                            <div>プレスリリース配信日</div>
+                            <div>プレスリリース配信日 <span class="extra">自動で入力されます</span></div>
                         </div>
                         <div class="admin-register-item-right">
-                            <input type="datetime" name="delivery_date" placeholder="yyyy/mm/dd" value="{{old('delivery_date')}}" class="form-item" readonly="radyonly" disabled="desabled">
+                            <input type="datetime" name="delivery_date" placeholder="yyyy/mm/dd" value="{{old('delivery_date')}}" class="form-item readonly" readonly="radyonly">
                             <span class="invalid-feedback"></span>
                         </div>
                     </div>
@@ -95,6 +95,7 @@
                         ご確認いただいた内容でお間違いがなければ送信してください。
                     </div>
                     <div class="admin-register-btn-group">
+                        <button type="button" class="common-btn admin-benefit-btn" id="desire-back" style="display: none;">編集する</button>
                         <button type="button" class="primary-btn admin-benefit-btn" id="desire-confirm">確認画面へ進む</button>
                         <button type="submit" class="primary-btn admin-benefit-btn" id="desire-thanks" style="display: none;">送信する</button>
                     </div>
@@ -111,17 +112,54 @@
     </section>
     <script>
         $(function() {
-            $( "input[name=desire_date]" ).datepicker({ dateFormat: 'yy/mm/dd' });
-            $("input[name=desire_date]").datepicker( $.datepicker.regional[ "ja" ] );
-            $( "input[name=delivery_date]" ).datepicker({ dateFormat: 'yy/mm/dd' });
-            $("input[name=delivery_date]").datepicker( $.datepicker.regional[ "ja" ] );
         });
         $(document).ready(function() {
+            $( "input[name=desire_date]" ).datepicker({
+                beforeShowDay: $.datepicker.noWeekends
+            });
+            $("input[name=desire_date]").datepicker( $.datepicker.regional[ "ja" ] );
+            $("input[name=desire_date]").change(function () {
+                var filterDate = new Date($(this).val());
+                var day = filterDate.getDay();
+                console.log(filterDate);
+                if(day == 5) 
+                    filterDate.setDate(filterDate.getDate() + 3);
+                else
+                    filterDate.setDate(filterDate.getDate() + 1);
+                month = filterDate.getMonth() + 1;
+                date = filterDate.getDate();
+                if (date < 10)
+                {
+                    date = '0' + date;
+                }
+                if (month < 10)
+                {
+                    month = '0' + (filterDate.getMonth()+1);
+                }
+
+                var weekdays = ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"];
+                var desire_date = new Date($(this).val());
+                var desire_weekday = weekdays[desire_date.getDay()];
+                if(day == 5) 
+                    var delivery_weekday = weekdays[1];
+                else
+                    var delivery_weekday = weekdays[desire_date.getDay() + 1];
+                
+                $("input[name=desire_date]").val($("input[name=desire_date]").val() + "(" + desire_weekday + ")");
+                $("input[name=delivery_date]").val(filterDate.getFullYear() + '/' + month + '/' + date + "(" + delivery_weekday + ")");
+            });
             $("input[name=desire_date]").focus(function() {
                 $("input[name=desire_date]").next().css("display", "none");
+                $("input[name=delivery_date]").next().css("display", "none");
+            });
+            $("input[name=delivery_date]").change(function () {
+                $("input[name=delivery_date]").next().css("display", "none");
             });
             $("input[name=delivery_date]").focus(function() {
                 $("input[name=delivery_date]").next().css("display", "none");
+            });
+            $("input[name=delivery_date]").click(function(e) {
+                e.stopPropagation();
             });
             $("#desire-confirm").click(function() {
                 var status = true;
@@ -140,11 +178,33 @@
                     $(".admin-desire-confirm-text").css("display", "block");
                     $(".admin-desire-input-text").css("display", "none");
                     $("#desire-confirm").css("display", "none");
+                    $("#desire-back").css("display", "flex");
                     $(".admin-register-input-title").removeClass("active");
                     $(".admin-register-confirm-title").addClass("active");
                     $(".admin-register-thanks-title").removeClass("active");
                     $(".form-item").attr("readonly", true);
+                    $(".circle01").removeClass("active-current");
+                    $(".circle01").addClass("active-past");
+                    $(".border01").addClass("active-past");
+                    $(".circle02").addClass("active-current");
+                    $(".admin-register-item").addClass("active");
                 }
+            });
+            $("#desire-back").click(function() {
+                $("#desire-thanks").css("display", "none");
+                $(".admin-desire-confirm-text").css("display", "none");
+                $(".admin-desire-input-text").css("display", "block");
+                $("#desire-confirm").css("display", "flex");
+                $("#desire-back").css("display", "none");
+                $(".admin-register-input-title").addClass("active");
+                $(".admin-register-confirm-title").removeClass("active");
+                $(".admin-register-thanks-title").removeClass("active");
+                $(".form-item").attr("readonly", false);
+                $(".circle01").addClass("active-current");
+                $(".circle01").removeClass("active-past");
+                $(".border01").removeClass("active-past");
+                $(".circle02").removeClass("active-current");
+                $(".admin-register-item").removeClass("active");
             });
             $('#desire-thanks').click(function(e){
                 e.preventDefault();
@@ -167,6 +227,10 @@
                         $("#desire-form").css("display", "none");
                         $(".admin-desire-confirm-text").css("display", "none");
                         $(".admin-desire-complete-text").css("display", "block");
+                        $(".circle02").removeClass("active-current");
+                        $(".circle02").addClass("active-past");
+                        $(".circle03").addClass("active-current");
+                        $(".border02").addClass("active-past");
                     },
                     error: function (error) {
                         console.log(error);

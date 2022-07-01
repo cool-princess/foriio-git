@@ -19,14 +19,14 @@
                 </div>
             </div>
             <div class="all-right">
-                <div class="all-item">
+                <a href="" class="all-item">
                     <img src="{{asset('img/all-item01.png')}}" alt="">
-                    <a href="">foriio Benefitsをみる</a>
-                </div>
-                <div class="all-item">
+                    <div class="btn">foriio Benefitsをみる</div>
+                </a>
+                <a href="" class="all-item">
                     <img src="{{asset('img/all-item02.png')}}" alt="">
-                    <a href="">クリエイターをみる</a>
-                </div>
+                    <div class="btn">クリエイターをみる</div>
+                </a>
             </div>
         </div>
         <div class="footer">

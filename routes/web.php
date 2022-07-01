@@ -34,10 +34,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/admin', function () {
-    return redirect('/admin/login');
-});
-
 Route::get('/login', [LoginController::class, 'showUserLoginForm'])->name('showUserLoginForm');
 Route::post('/login', [LoginController::class,'userLogin'])->name('userLoginPost');
 Route::get('/logout', [LogoutController::class,'userLogout'])->name('userLogout');
@@ -58,14 +54,8 @@ Route::get('/report', [ContractController::class, 'report'])->name('userReport')
 Route::post('/report', [ContractController::class,'reportPost'])->name('userReportPost');
 Route::post('/report_quiz', [ContractController::class,'report_quiz'])->name('userReportQuiz');
 Route::get('/all_complete', [ContractController::class, 'all_complete'])->name('userAllComplete');
-Route::get('/admin/manage', [ContractController::class, 'manage'])->name('adminManage');
-Route::post('/admin/manage', [ContractController::class, 'managePost'])->name('adminManagePost');
-
-Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm'])->name('showAdminLoginForm');
-Route::post('/admin/login', [LoginController::class,'adminLogin'])->name('adminLoginPost');
-Route::get('/admin/register', [AdminController::class,'show'])->name('adminRegister');
-Route::post('/admin/register', [AdminController::class,'store'])->name('adminRegisterPost');
-Route::get('/admin/logout', [LogoutController::class,'adminLogout'])->name('adminLogout');
+Route::get('/admin', [AdminController::class, 'show'])->name('adminManage');
+Route::post('/admin', [AdminController::class, 'managePost'])->name('adminManagePost');
 
 Route::get('download/{filename}', function($filename)
 {

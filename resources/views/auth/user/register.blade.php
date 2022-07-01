@@ -10,29 +10,29 @@
             <div class="main-title admin-register-confirm-title">登録内容の確認</div>
             <div class="main-title admin-register-thanks-title"><img src="{{ asset('img/register-thanks.png') }}" alt=""><span>仮登録完了</span></div>
             <div class="workflow">
-                <div class="workflow-state workflow-register active">
+                <div class="workflow-state state01 workflow-register active">
                     <div class="workflow-title">
                         01.会員登録
                     </div>
                     <div class="workflow-chart">
-                        <div class="workflow-circle active-past"><span>入力</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle active-current"><span>確認</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle"><span>完了</span></div>
+                        <div class="workflow-circle circle01 active-current"><span>入力</span></div>
+                        <div class="workflow-border border01"></div>
+                        <div class="workflow-circle circle02"><span>確認</span></div>
+                        <div class="workflow-border border02"></div>
+                        <div class="workflow-circle circle03"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-contract">
+                <div class="workflow-state state02 workflow-contract pc">
                     <div class="workflow-title">
                         02.契約書締結
                     </div>
                     <div class="workflow-chart">
-                        <div class="workflow-circle"><span>入力</span></div>
+                        <div class="workflow-circle circle01"><span>入力</span></div>
                         <div class="workflow-border"></div>
-                        <div class="workflow-circle"><span>完了</span></div>
+                        <div class="workflow-circle circle02"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-benefits">
+                <div class="workflow-state state03 workflow-benefits pc">
                     <div class="workflow-title">
                         03.特典内容
                     </div>
@@ -42,7 +42,7 @@
                         <div class="workflow-circle"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-date-info">
+                <div class="workflow-state state04 workflow-date-info pc">
                     <div class="workflow-title">
                         04.掲載日・プレスリリース日
                     </div>
@@ -97,6 +97,8 @@
                     <p class="admin-register-text">こちらからforiio Benefitsの会員登録をお願いいたします。<br>
                         ご入力いただけましたら確認画面へおすすみください。
                     </p>
+                    <p class="admin-register-confirm-text" style="display: none;">ご入力いただいた内容にお間違いがないかご確認ください。
+                    </p>
                     <div class="admin-register-btn-group">
                         <button type="button" class="admin-register-btn common-btn" id="register-back">編集する</button>
                         <button type="button" class="admin-register-btn primary-btn" id="register-confirm">確認画面へ進む</button>
@@ -123,6 +125,24 @@
             }
         }
         $(document).ready(function() {
+            document.querySelector("input[name=person]").addEventListener("keypress", function (event) {
+                var key = event.keyCode;
+                if ((key >= 48 && key <= 57) || key == 8 || ((12352<= code && code <= 12447) || (12448<= code && code <= 12543) || (19968<= code && code <= 19893))) 
+                    event.preventDefault();
+            });
+
+            $("input[name=password]").keypress(function(event){
+                var ew = event.which;
+                if(ew == 32)
+                    return true;
+                if(48 <= ew && ew <= 57)
+                    return true;
+                if(65 <= ew && ew <= 90)
+                    return true;
+                if(97 <= ew && ew <= 122)
+                    return true;
+                return false;
+            });
             $("input[name=company]").focus(function() {
                 $("input[name=company]").next().css("display", "none");
             });
@@ -173,20 +193,35 @@
                     $("#register-back").css("display", "flex");
                     $("#register-thanks").css("display", "flex");
                     $("#register-confirm").css("display", "none");
+                    $(".admin-register-text").css("display", "none");
+                    $(".admin-register-confirm-text").css("display", "flex");
                     $(".admin-register-input-title").removeClass("active");
                     $(".admin-register-confirm-title").addClass("active");
                     $(".admin-register-thanks-title").removeClass("active");
                     $(".form-item").attr("readonly", true);
+                    $(".circle01").removeClass("active-current");
+                    $(".circle01").addClass("active-past");
+                    $(".circle02").addClass("active-current");
+                    $(".border01").addClass("active-past");
+                    $(".admin-register-item").addClass("active");
                 }
             });
             $("#register-back").click(function() {
                 $("#register-back").css("display", "none");
                 $("#register-thanks").css("display", "none");
                 $("#register-confirm").css("display", "flex");
+                $(".admin-register-text").css("display", "flex");
+                $(".admin-register-confirm-text").css("display", "none");
                 $(".admin-register-input-title").addClass("active");
                 $(".admin-register-confirm-title").removeClass("active");
                 $(".admin-register-thanks-title").removeClass("active");
                 $(".form-item").attr("readonly", false);
+                $(".form-item").removeClass("readonly");
+                $(".circle01").addClass("active-current");
+                $(".circle01").removeClass("active-past");
+                $(".circle02").removeClass("active-current");
+                $(".border01").removeClass("active-past");
+                $(".admin-register-item").removeClass("active");
             });
             $('#register-thanks').click(function(e){
                 e.preventDefault();
@@ -212,6 +247,13 @@
                             $(".admin-register-thanks-title").addClass("active");
                             $("#register-form").css("display", "none");
                             $(".admin-register-success-text").css("display", "block");
+                            $(".circle01").removeClass("active-current");
+                            $(".circle01").addClass("active-past");
+                            $(".circle02").removeClass("active-current");
+                            $(".circle02").addClass("active-past");
+                            $(".circle03").addClass("active-current");
+                            $(".border02").addClass("active-past");
+                            $(".admin-register-confirm-text").css("display", "none");
                         }
                         else if(response.success == 'すでに登録されているメールです。') {
                             $("input[name=email]").next().text("すでに登録されているメールです。");
@@ -219,10 +261,19 @@
                             $("#register-back").css("display", "none");
                             $("#register-thanks").css("display", "none");
                             $("#register-confirm").css("display", "flex");
+                            $(".admin-register-text").css("display", "flex");
+                            $(".admin-register--confirm-text").css("display", "none");
                             $(".admin-register-input-title").addClass("active");
                             $(".admin-register-confirm-title").removeClass("active");
                             $(".admin-register-thanks-title").removeClass("active");
                             $(".form-item").attr("readonly", false);
+                            $(".circle01").removeClass("active-past");
+                            $(".circle01").addClass("active-current");
+                            $(".circle02").removeClass("active-past");
+                            $(".circle02").removeClass("active-current");
+                            $(".circle03").removeClass("active-current");
+                            $(".border01").removeClass("active-past");
+                            $(".admin-register-item").removeClass("active");
                         }
                     },
                     error: function (error) {

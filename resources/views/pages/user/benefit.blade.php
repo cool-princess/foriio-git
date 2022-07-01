@@ -10,7 +10,7 @@
             <div class="main-title admin-register-confirm-title">foriio Benefitsに掲載する特典内容の確認</div>
             <div class="main-title admin-register-thanks-title"><img src="{{ asset('img/register-thanks.png') }}" alt=""><span>foriio Benefitsに掲載する特典内容が送信されました。</span></div>
             <div class="workflow">
-                <div class="workflow-state workflow-register active">
+                <div class="workflow-state workflow-register active-pass pc">
                     <div class="workflow-title">
                         01.会員登録
                     </div>
@@ -22,7 +22,7 @@
                         <div class="workflow-circle active-pass"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-contract active">
+                <div class="workflow-state workflow-contract active-pass pc">
                     <div class="workflow-title">
                         02.契約書締結
                     </div>
@@ -37,12 +37,12 @@
                         03.特典内容
                     </div>
                     <div class="workflow-chart">
-                        <div class="workflow-circle active-pass"><span>入力</span></div>
-                        <div class="workflow-border"></div>
-                        <div class="workflow-circle active-pass"><span>完了</span></div>
+                        <div class="workflow-circle circle01 active-current"><span>入力</span></div>
+                        <div class="workflow-border border01"></div>
+                        <div class="workflow-circle circle02"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-date-info">
+                <div class="workflow-state workflow-date-info pc">
                     <div class="workflow-title">
                         04.掲載日・プレスリリース日
                     </div>
@@ -57,6 +57,7 @@
             </div>
             <div class="benefit-text">
                 foriio Benefitsページの作成にあたって支給いただきたい情報がございますので下記へご記入ください。<br>
+                ご記入後には、必ず右下の赤い送信ボタンを押してください。<br>
                 また、下記URLが掲載されるページとなりますので、ご確認いただければ幸いです。<br>
                 foriioBENEFIT：<a href="https://www.foriio.com/benefits">https://www.foriio.com/benefits</a>
             </div>
@@ -70,6 +71,9 @@
                     });
                 </script>
                 <a href="" class="benefit-alt-btn">送信</a>
+                <div class="benefit-submit-confirm-text">
+                    記入内容を確認し、送信ボタンを押してください
+                </div>
             </div>
             <div class="admin-benefit-btn-group">
                 <div class="admin-benefit-btn-part benefit-quiz">
@@ -98,9 +102,9 @@
         </div>
         <div id="benefit-quiz" class="modal2">
             <div class="modal-content">
-                <h1>質問・修正依頼をご記入ください。</h1>
+                <h1>質問入力フォーム</h1>
                 <form id="quiz-form">
-                    <textarea name="quiz" id="" placeholder="質問・修正依頼をご記入ください。"></textarea>
+                    <textarea name="quiz" id="" placeholder="質問をご記入ください。"></textarea>
                     <span class="invalid-feedback"></span>
                     <a href="#" class="admin-benefit-btn primary-btn" id="benefit-quiz-send">送信する</a>
                 </form>
@@ -119,6 +123,7 @@
                 var iframe = $('.hs-form-iframe').contents();
                 iframe.find('.hs-form').submit();
                 $(".benefit-alt-btn").css("display", "none");
+                $(".benefit-submit-confirm-text").css("display", "none");
                 $(".benefit-text").css("display", "none");
 
             });
@@ -149,6 +154,10 @@
                             $(".benefit-quiz").css("display", "none");
                             $(".admin-benefit-confirm-text").css("display", "none");
                             $(".to-desired").css("display", "flex");
+                            $(".circle01").removeClass("active-current");
+                            $(".circle01").addClass("active-past");
+                            $(".border01").addClass("active-past");
+                            $(".circle02").addClass("active-current");
                         },
                         error: function (error) {
                             console.log(error);

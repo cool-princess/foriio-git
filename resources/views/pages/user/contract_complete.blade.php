@@ -8,7 +8,7 @@
         <div class="container">
             <div class="main-title admin-contract-thanks-title"><img src="{{ asset('img/register-complete.png') }}" alt=""><span>締結完了</span></div>
             <div class="workflow">
-                <div class="workflow-state workflow-register">
+                <div class="workflow-state workflow-register active-pass pc">
                     <div class="workflow-title">
                         01.会員登録
                     </div>
@@ -26,11 +26,11 @@
                     </div>
                     <div class="workflow-chart">
                         <div class="workflow-circle active-past"><span>入力</span></div>
-                        <div class="workflow-border"></div>
+                        <div class="workflow-border border01 active-past"></div>
                         <div class="workflow-circle active-current"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-benefits">
+                <div class="workflow-state workflow-benefits pc">
                     <div class="workflow-title">
                         03.特典内容
                     </div>
@@ -40,7 +40,7 @@
                         <div class="workflow-circle"><span>完了</span></div>
                     </div>
                 </div>
-                <div class="workflow-state workflow-date-info">
+                <div class="workflow-state workflow-date-info pc">
                     <div class="workflow-title">
                         04.掲載日・プレスリリース日
                     </div>

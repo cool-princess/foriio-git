@@ -228,7 +228,7 @@ button:hover {
     display: none;
     position: fixed;
     color: white;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: #fff;
     right: 0;
     top: 0;
     left: 0;
@@ -278,9 +278,10 @@ button:hover {
 /***********LogIn page*********/
 #admin_login {
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 100vh;
     position: relative;
     display: flex;
+    padding-top: 80px;
 }
 
 .login-l-part {
@@ -416,7 +417,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 140px 40px;
+    padding: 160px 40px 80px;
 }
 
 .main-title {
@@ -424,7 +425,7 @@ button:hover {
     font-size: 26px;
     line-height: 32px;
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 60px;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -478,12 +479,8 @@ button:hover {
     margin-bottom: 15px;
 }
 
-.workflow-state.active .workflow-title.active-current {
+.workflow-state.active .workflow-title {
     color: #5863f8;
-}
-
-.workflow-state.active .workflow-title.active-pass {
-    color: #828282;
 }
 
 .workflow-chart {
@@ -522,18 +519,26 @@ button:hover {
     color: #5863f8;
 }
 
-.workflow-state.active .workflow-circle.active-pass {
+.workflow-state.active .workflow-border.active-past {
+    border-bottom: 1px solid #5863f8;
+}
+
+.workflow-state.active-pass .workflow-circle {
     background-color: #828282;
     color: #828282;
+}
+
+.workflow-state.active-pass .workflow-title {
+    color: #828282;
+}
+
+.workflow-state.active-pass .workflow-border {
+    border-bottom: 1px solid #828282;
 }
 
 .workflow-border {
     width: 70px;
     border-bottom: 1px solid #d4d9de;
-}
-
-.workflow-state.active .workflow-border {
-    border-bottom: 1px solid #5863f8;
 }
 
 .admin-register-part {
@@ -553,6 +558,27 @@ button:hover {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 30px;
+}
+
+.admin-register-item.active {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 25px 150px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.admin-register-item.active .admin-register-item-left span {
+    display: none;
+}
+
+.admin-register-item.active .admin-register-item-left {
+    white-space: nowrap;
+    margin-right: 30px;
+}
+
+.admin-register-item.active .admin-register-item-right {
+    width: unset;
 }
 
 .admin-register-item-left {
@@ -632,6 +658,16 @@ button:hover {
     border: 1px solid #ddd;
 }
 
+.admin-register-item.active .admin-register-item-right input.form-item {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+.admin-register-item.active .admin-register-item-right input:focus {
+    outline: none;
+}
+
 .admin-register-text {
     font-size: 12px;
     line-height: 24px;
@@ -668,7 +704,7 @@ button:hover {
 /*************Contract Page******************/
 
 #admin_contract .container {
-    padding: 100px 20px;
+    padding: 160px 20px 60px;
 }
 
 .contract-part {
@@ -788,6 +824,10 @@ button:hover {
     margin-bottom: 30px;
 }
 
+.modal-content textarea::placeholder {
+    color: #E0E0E0;
+}
+
 .contract-next-text {
     font-size: 12px;
     line-height: 24px;
@@ -801,7 +841,7 @@ button:hover {
 }
 
 #admin_benefit .container {
-    padding: 80px 20px;
+    padding: 160px 20px 80px;
 }
 
 .benefit-text {
@@ -864,10 +904,10 @@ button:hover {
 }
 .benefit-alt-btn {
     position: absolute;
-    bottom: 17px;
+    bottom: 60px;
     left: 0;
     width: 74px;
-    height: 38px;
+    height: 40px;
     background: #ff7a59;
     border: 1px solid #ff7a59;
     border-radius: 5px;
@@ -882,6 +922,15 @@ button:hover {
     background: #fff;
     color: #ff7a59;
 }
+
+.benefit-submit-confirm-text {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: left;
+    color: #828282;
+    margin: 20px 0;
+}
+
 .admin-benefit-confirm-text,
 .admin-benefit-success-text {
     font-size: 12px;
@@ -904,7 +953,7 @@ button:hover {
 }
 
 #admin_desire_date .container {
-    padding: 80px 20px;
+    padding: 160px 20px 80px;
 }
 
 .admin-desire-input-text,
@@ -914,7 +963,33 @@ button:hover {
     line-height: 24px;
     text-align: center;
     color: #828282;
-    margin-bottom: 30px;
+    margin: 30px 0;
+}
+
+.admin-desire-part .admin-register-item.active {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.admin-desire-part .admin-register-item.active .admin-register-item-right input {
+    text-align: center;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    color: #000;
+}
+
+.admin-desire-part .admin-register-item .form-item.readonly:focus {
+    outline: none;
+}
+
+.admin-desire-part .admin-register-item-left span.extra {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: left;
+    color: #828282;
+    margin-left: 20px;
 }
 
 .admin-report-input-text,
@@ -931,7 +1006,7 @@ button:hover {
 }
 
 #admin_report .container {
-    padding: 80px 20px;
+    padding: 160px 20px 80px;
 }
 
 #admin_report .workflow {
@@ -1004,12 +1079,16 @@ button:hover {
     margin-bottom: 5px;
 }
 
-.all-item  a {
+.all-item .btn {
     font-weight: bold;
     font-size: 14px;
     line-height: 24px;
     text-align: left;
     color: #000;
+}
+
+.all-item:hover {
+    opacity: 0.8;
 }
 
 #admin_manage .header .navbar h1 a img {
@@ -1050,7 +1129,7 @@ button:hover {
 }
 
 #admin_manage .container {
-    padding: 80px 20px;
+    padding: 160px 20px 80px;
 }
 
 #admin_manage .container form {
@@ -1130,6 +1209,30 @@ button:hover {
     outline: none;
 }
 
+@media(max-width: 1280px) {
+    .login-l-part {
+        width: 65%;
+    }
+
+    .login-r-part {
+        width: 35%;
+    }
+}
+
+@media(max-width: 1000px) {
+    .login-l-part {
+        padding: 60px 50px;
+    }
+
+    .login-btn {
+        width: 280px;
+    }
+
+    .login-r-part {
+        padding: 40px 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         padding: 0 20px;
@@ -1154,18 +1257,36 @@ button:hover {
     }
 
     /* login page */
+
+    #admin_login {
+        flex-direction: column;
+    }
     .login-content {
         margin-bottom: 40px;
     }
     .login-l-part {
         width: 100%;
-        padding: 140px 20px;
+        padding: 80px 20px 40px;
     }
     .login-title {
+        text-align: center;
         margin-bottom: 40px;
     }
     .login-r-part {
-        display: none;
+        width: 100%;
+        align-items: center;
+        background: url("../img/login-img-sp.png") no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+        padding: 120px 20px 20px;
+        height: 375px;
+    }
+
+    .login-r-part-btn-group {
+        justify-content: center;
+    }
+    .login-r-part-btn-group a {
+        font-size: 16px;
     }
     .form-main {
         flex-direction: column;
@@ -1178,6 +1299,7 @@ button:hover {
     }
     .login-btn-group {
         margin: auto;
+        width: 100%;
     }
 
     /* register page */
@@ -1194,6 +1316,9 @@ button:hover {
     .all-left {
         width: 100%;
         margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .all-right {
@@ -1201,11 +1326,57 @@ button:hover {
         flex-direction: column;
     }
 
+    .all-title {
+        font-size: 40px;
+    }
+
+    .all-item a {
+        font-size: 20px;
+    }
+
+    .all-content {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+
     .all-item {
         width: 100%;
     }
 
     .all-item:nth-child(1) {
-        margin-bottom: 30px;
+        margin-bottom: 80px;
+    }
+
+    .menubar-name {
+        margin-left: 0;
+    }
+
+    .admin-register-btn-group {
+        width: 100%;
+    }
+}
+
+@media(max-width: 767px) {
+    .pc {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+    .primary-btn {
+        width: 100%;
+    }
+
+    .common-btn {
+        width: 100%;
+    }
+
+    #admin_register .container {
+        padding: 120px 20px;
+    }
+
+    .all-item:nth-child(1) {
+        margin-bottom: 50px;
     }
 }
